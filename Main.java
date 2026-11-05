@@ -73,6 +73,7 @@ public class Main {
         System.out.println("1. Cash (Wallet baru)");
         System.out.println("2. Debit Card");
         System.out.println("3. Credit Card");
+        System.out.println("4. E-Wallet");
         System.out.print("Pilih: ");
         String choice = scanner.nextLine().trim();
         try {
@@ -94,6 +95,12 @@ public class Main {
                     String ccv = ask("CCV: ");
                     String pin = ask("PIN: ");
                     methods.add(new CreditCard(no, limit, ccv, pin));
+                }
+                case "4" -> {
+                    String phone = ask("Nomor HP: ");
+                    double bal = Double.parseDouble(ask("Saldo: "));
+                    String pin = ask("PIN: ");
+                    methods.add(new EWallet(phone, bal, pin));
                 }
                 default -> { System.out.println("Pilihan tidak valid."); return; }
             }

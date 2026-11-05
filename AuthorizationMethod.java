@@ -1,3 +1,3 @@
 public enum AuthorizationMethod {
-    CCV, PIN
+    CCV, PIN, OTP
 }
