@@ -1,4 +1,6 @@
-public class Wallet {
+import java.util.List;
+
+public class Wallet implements PaymentStrategy {
     private String name;
     private double cashValue;
 
@@ -7,13 +9,20 @@ public class Wallet {
         this.cashValue = cashValue;
     }
 
+    @Override
     public boolean validate(double amount) {
         return cashValue >= amount;
     }
 
+    @Override
     public void pay(double amount) {
         cashValue -= amount;
         System.out.println("Pembayaran cash berhasil, sisa wallet: " + (long) cashValue);
+    }
+
+    @Override
+    public List<AuthorizationMethod> getRequiredAuthorizations() {
+        return List.of();
     }
 
     @Override
