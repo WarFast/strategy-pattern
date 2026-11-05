@@ -5,6 +5,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Wallet wallet = new Wallet("Wallet Utama", 10000);
         DebitCard debit = new DebitCard("1111-2222", 100000, "1234");
+        CreditCard credit = new CreditCard("3333-4444", 5000000, "123", "1234");
 
         while (true) {
             System.out.print("Masukkan jumlah yang dibayar (0 untuk keluar): ");
@@ -14,6 +15,7 @@ public class Main {
             System.out.println("Pilih metode pembayaran:");
             System.out.println("1. Cash");
             System.out.println("2. Debit");
+            System.out.println("3. Credit Card");
             System.out.print("Pilih: ");
             String choice = scanner.nextLine().trim();
 
@@ -31,6 +33,22 @@ public class Main {
                 System.out.print("Masukkan PIN: ");
                 if (debit.getPin().equals(scanner.nextLine().trim())) {
                     debit.pay(amount);
+                } else {
+                    System.out.println("PIN salah.");
+                }
+            } else if (choice.equals("3")) {
+                if (!credit.validate(amount)) {
+                    System.out.println("Limit kredit tidak cukup.");
+                    continue;
+                }
+                System.out.print("Masukkan CCV: ");
+                if (!credit.getCcv().equals(scanner.nextLine().trim())) {
+                    System.out.println("CCV salah.");
+                    continue;
+                }
+                System.out.print("Masukkan PIN: ");
+                if (credit.getPin().equals(scanner.nextLine().trim())) {
+                    credit.pay(amount);
                 } else {
                     System.out.println("PIN salah.");
                 }
