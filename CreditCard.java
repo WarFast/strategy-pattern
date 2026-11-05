@@ -30,4 +30,9 @@ public class CreditCard {
         System.out.println("Pembayaran kredit berhasil, total hutang: " + (long) currentDebt
                 + ", sisa limit: " + (long) (limit - currentDebt));
     }
+
+    @Override
+    public String toString() {
+        return "Credit Card - " + cardNumber + " (sisa limit: " + (long) (limit - currentDebt) + ")";
+    }
 }

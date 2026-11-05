@@ -21,4 +21,9 @@ public class DebitCard {
         balance -= amount;
         System.out.println("Pembayaran debit berhasil, sisa saldo: " + (long) balance);
     }
+
+    @Override
+    public String toString() {
+        return "Debit Card - " + cardNumber + " (saldo: " + (long) balance + ")";
+    }
 }

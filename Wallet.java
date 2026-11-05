@@ -15,4 +15,9 @@ public class Wallet {
         cashValue -= amount;
         System.out.println("Pembayaran cash berhasil, sisa wallet: " + (long) cashValue);
     }
+
+    @Override
+    public String toString() {
+        return "Cash - " + name + " (saldo: " + (long) cashValue + ")";
+    }
 }
