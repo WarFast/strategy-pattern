@@ -33,6 +33,11 @@ public class DebitCard implements PaymentStrategy, HasPin {
     }
 
     @Override
+    public boolean canPay(double amount) {
+        return amount <= 10_000_000;
+    }
+
+    @Override
     public String toString() {
         return "Debit Card - " + cardNumber + " (saldo: " + (long) balance + ")";
     }

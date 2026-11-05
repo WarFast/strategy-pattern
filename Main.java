@@ -39,8 +39,11 @@ public class Main {
             return;
         }
 
-        List<PaymentStrategy> available = new ArrayList<>(methods);
-
+        // Tahap 6: filter dengan canPay
+        List<PaymentStrategy> available = new ArrayList<>();
+        for (PaymentStrategy m : methods) {
+            if (m.canPay(amount)) available.add(m);
+        }
         if (available.isEmpty()) {
             System.out.println("Tidak ada metode pembayaran yang tersedia untuk nominal ini.");
             return;

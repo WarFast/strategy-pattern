@@ -43,6 +43,11 @@ public class CreditCard implements PaymentStrategy, HasPin, HasCcv {
     }
 
     @Override
+    public boolean canPay(double amount) {
+        return amount >= 100_000 && amount <= 100_000_000;
+    }
+
+    @Override
     public String toString() {
         return "Credit Card - " + cardNumber + " (sisa limit: " + (long) (limit - currentDebt) + ")";
     }
